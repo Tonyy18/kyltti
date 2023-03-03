@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+	<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+</head>
+<body>
+<div class="left">
+	<ul class="controls">
+		<li>
+			<input type="text" value="Teksti" id="text-input" placeholder="Teksti">
+		</li>
+		<li>
+			<span>Fontin koko</span>
+			<input type="range" min="5" max="20" id="font-size-input" value="12">
+		</li>
+		<li>
+			<span>Paneelin leveys</span>
+			<input type="range" min="5" max="150" id="panel-width-input" value="80">
+		</li>
+		<li>
+			<span>Paneelin korkeus</span>
+			<input type="range" min="20" max="80" id="panel-height-input" value="35">
+		</li>
+		<li>
+			<span>Varren pituus</span>
+			<input type="range" min="0" max="150" id="shaft-height-input" value="100">
+		</li>
+		<li>
+			<span>Varren leveys</span>
+			<input type="range" min="3" max="20" id="shaft-width-input" value="8">
+		</li>
+	</ul>
+</div>
+<div class="right">
+	<div class="model" id="model">
+		<div class="panel" id="panel">
+			<div class="middle">
+				<p id="text-value">Teksti</p>
+			</div>
+		</div>
+		<div class="shaft-container" id="shaft-container">
+			<div class="shaft" id="shaft">
+			
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+$("#shaft-width-input").on("input", function() {
+	$("#shaft").css({
+		"width": $(this).val() + "mm"
+	}).css({
+		"left": (parseInt($("#shaft-container").width(), 10) / 2) - (parseInt($("#shaft").width(), 10) / 2)
+	});
+})
+$("#font-size-input").on("input", function() {
+	$("#panel .middle p").css("font-size", $(this).val() + "mm");
+})
+$("#shaft-height-input").on("input", function() {
+	$("#shaft-container").css("height", $(this).val() + "mm");
+})
+$("#panel-height-input").on("input", function() {
+	$("#panel").css("height", $(this).val() + "mm")
+})
+$("#panel-width-input").on("input", function() {
+	const width = parseInt($(this).val());
+	$("#model").css("width", width + "mm");
+	$("#shaft").css("left", (width / 2) - 4 + "mm");
+})
+$("#text-input").on("input", function() {
+	$("#text-value").html($(this).val());
+})
+</script>
+</body>
+</html>

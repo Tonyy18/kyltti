@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+* {
+	padding: 0px;
+	margin: 0px;
+	box-sizing: border-box;
+	font-size: 14px;
+	font-family: Roboto;
+}
+:root {
+	--panel-width: 80mm;
+	--panel-height: 35mm;
+	--shaft-width: 8mm;
+	--shaft-height: 100mm;
+}
+html, body {
+	height: 100%;
+	background-color: #FAFAFA;
+	font-size: 0px;
+}
+body > .left,
+body > .right {
+	display: inline-block;
+	vertical-align: top;
+	width: 50%;
+	padding: 20px;
+}
+body > .left {
+	display: inline-flex;
+	justify-content: right;
+}
+
+.controls {
+	width: 200px;
+	padding-top: 50px;
+}
+.controls li {
+	display: block;
+	margin-bottom: 10px;
+}
+.controls li span {
+	display: block;
+	font-size: 12px;
+}
+.controls li input {
+	width: 100%;
+}
+.controls li input[type="text"] {
+	padding: 5px;
+	border-radius: 3px;
+	border: 1px solid #E2E2E2;
+	outline: none;
+}
+.controls li input[type="text"]:hover,
+.controls li input[type="text"]:focus {
+	border: 1px solid black;
+}
+.model {
+	width: var(--panel-width);
+}
+
+.model .panel {
+	height: var(--panel-height);
+	position: relative;
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+	background-color: white;
+}
+.model .panel .middle {
+	width: calc(100% - 6mm);
+	height: calc(100% - 6mm);
+	left: 3mm;
+	top: 3mm;
+	position: absolute;
+	box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.2);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.model .panel .middle p {
+	font-size: 12mm;
+	color: white;
+	display: inline-block;
+	text-shadow: 0 0 3px rgba(0,0,0,0.2), 0 0 5px rgba(0,0,0,0.2);
+}
+.model .shaft-container {
+	height: var(--shaft-height);
+	position: relative;
+}
+.model .shaft-container .shaft {
+	background-color: white;
+	width: var(--shaft-width);
+	position: absolute;
+	left: calc(50% - var(--shaft-width) / 2);
+	height: 100%;
+	box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
+}
